@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<div ng-controller="ContactController">
+    <div class="modal-header">
+        <h3 class="modal-title">Edit Contact - Employer</h3>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Employer:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" capitalize ng-model="contact.companyName" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Contact Name:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.contactName.first" capitalize />
+                </div>
+            </div>            
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Home Address:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.addressLine1" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Apt No:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.addressLine2" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">City:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.city" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">State:</label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="contact.address.state"
+                            ng-options="key as value for (key, value) in states">
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Zip:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.zipCode.zip" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Phone:</label>
+                <div class="col-md-6">
+                  <input type="tel" class="form-control"  ng-model="contact.phone" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Fax:</label>
+                <div class="col-md-6">
+                  <input type="tel" class="form-control"  ng-model="contact.fax" />
+                </div>
+            </div>            
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Comments:</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="3" style="height: 85px; width: 270px;" 
+                              ng-model="contact.editContactFreeFormText"></textarea>
+                </div>
+            </div>      
+            <div class="form-group form-group-sm">
+              <div class="col-md-offset-4 col-md-5">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>

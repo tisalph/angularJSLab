@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<div ng-controller="ContactController">
+    <div class="modal-header">
+        <h3 class="modal-title">Edit Contact - Injured Worker</h3>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Change Reason:</label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="contact.changeReasonCode" ng-options="key as value for (key , value) in contactUpdateReasons">
+                        <option value="">-- choose reason --</option>
+                    </select>
+                </div>
+            </div>            
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">First Name:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.contactName.first" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Middle Initial:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.contactName.middleInitial" capitalize/>
+                </div>
+            </div>            
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Last Name:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.contactName.lastName" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Suffix:</label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="contact.contactName.suffix"
+                            ng-options="value for value in nameSuffixes">
+                        <option value="">-- choose suffix --</option>
+                    </select>  
+                </div>
+            </div>            
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Home Address:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.addressLine1" capitalize />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Apt No:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.addressLine2" capitalize/>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">City:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.city" capitalize/>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">State:</label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="contact.address.state"
+                            ng-options="key as value for (key, value) in states">
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Zip:</label>
+                <div class="col-md-6">
+                  <input type="text" class="form-control"  ng-model="contact.address.zipCode.zip" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Phone:</label>
+                <div class="col-md-6">
+                  <input type="tel" class="form-control"  ng-model="contact.phone" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Effective Date:</label>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" 
+                               ng-model="contact.effectiveDate" 
+                               is-open="opened" 
+                               min-date="minDate" 
+                               max-date="'2015-06-22'" 
+                               datepicker-options="dateOptions" 
+                               date-disabled="disabled(date, mode)" 
+                               ng-required="true" 
+                               close-text="Close" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-sm" ng-click="openDatePicker($event)">
+                              <i class="glyphicon glyphicon-calendar"></i>
+                          </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-md-4 control-label">Comments:</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="3" style="height: 85px; width: 270px;" 
+                              ng-model="contact.editContactFreeFormText"></textarea>
+                </div>
+            </div>      
+            <div class="form-group form-group-sm">
+              <div class="col-md-offset-4 col-md-5">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
